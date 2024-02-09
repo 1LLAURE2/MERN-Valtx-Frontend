@@ -1,14 +1,22 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import {format} from 'timeago.js';
 
 export default class NotesList extends Component {
     state={
         notas:[]
     }
-    async componentDidMount(){
+    componentDidMount(){
+        this.obtenerNotas();
+        
+    }
+    async obtenerNotas(){
         const res=await axios.get('http://127.0.0.1:4000/api/notas')
         this.setState({notas:res.data})
-        console.log(res)
+    }
+    eliminarNota=async (id)=>{
+        await axios.delete('http://127.0.0.1:4000/api/notas/'+id);
+        this.obtenerNotas();
     }
     render() {
         return (
@@ -23,6 +31,12 @@ export default class NotesList extends Component {
                             <div className='card-body'>
                                 <p>{notita.content}</p>
                                 <p>{notita.author}</p>
+                                <p>{format(notita.date,"es")}</p>
+                            </div>
+                            <div className='card-footer'>
+                                <button className='btn btn-danger' onClick={()=>this.eliminarNota(notita._id)}>
+                                    Eliminar
+                                </button>
                             </div>
                         </div>
                     </div>
