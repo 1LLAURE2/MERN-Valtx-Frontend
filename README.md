@@ -71,4 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Librerias Necesarias
  - [React Router DOM](https://www.npmjs.com/package/react-router-dom)
- - 
+ - [Bootstrap](https://getbootstrap.com/)
+ - [Axios](https://www.npmjs.com/package/axios)
+
+# API consumir
+ - [API Node](https://github.com/1LLAURE2/MERN-Valtx/tree/master)
